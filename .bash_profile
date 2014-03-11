@@ -5,8 +5,11 @@ for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
 done
 unset file
 
+# Set Java Home
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # init z   https://github.com/rupa/z
-. ~/code/z/z.sh
+. ~/Git/z/z.sh
 
 # init rvm
 source ~/.rvm/scripts/rvm
