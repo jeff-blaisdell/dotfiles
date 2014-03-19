@@ -35,3 +35,16 @@
 #https://github.com/jigish/slate
 # Slate OS X Window Manager
 #cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz
+
+#https://github.com/robbyrussell/oh-my-zsh
+# Oh-My-Zsh
+#curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+#https://gist.github.com/simme/1297707
+# tmux installer
+brew install tmux
+
+#https://github.com/remiprev/teamocil
+# teamocil - named tmux sessions.
+gem install teamocil
+mkdir ~/.teamocil

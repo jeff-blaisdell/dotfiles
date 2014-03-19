@@ -67,10 +67,13 @@ source ~/Git/z/z.sh
 # init rvm
 source ~/.rvm/scripts/rvm
 
+# init nvm
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
-export PATH="/Users/jblaisdell/.rvm/gems/ruby-2.1.1/bin:/Users/jblaisdell/.rvm/gems/ruby-2.1.1@global/bin:/Users/jblaisdell/.rvm/rubies/ruby-2.1.1/bin:/Users/jblaisdell/.gvm/vertx/current/bin:/Users/jblaisdell/.gvm/springboot/current/bin:/Users/jblaisdell/.gvm/lazybones/current/bin:/Users/jblaisdell/.gvm/groovyserv/current/bin:/Users/jblaisdell/.gvm/groovy/current/bin:/Users/jblaisdell/.gvm/griffon/current/bin:/Users/jblaisdell/.gvm/grails/current/bin:/Users/jblaisdell/.gvm/gradle/current/bin:/Users/jblaisdell/.gvm/gaiden/current/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/jblaisdell/.rvm/bin"
+export PATH="$HOME/.rvm/gems/ruby-2.1.1/bin:$HOME/.rvm/gems/ruby-2.1.1@global/bin:$HOME/.rvm/rubies/ruby-2.1.1/bin:$HOME/.gvm/vertx/current/bin:$HOME/.gvm/springboot/current/bin:$HOME/.gvm/lazybones/current/bin:$HOME/.gvm/groovyserv/current/bin:$HOME/.gvm/groovy/current/bin:$HOME/.gvm/griffon/current/bin:$HOME/.gvm/grails/current/bin:$HOME/.gvm/gradle/current/bin:$HOME/.gvm/gaiden/current/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$HOME/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -87,6 +90,6 @@ export PATH="/Users/jblaisdell/.rvm/gems/ruby-2.1.1/bin:/Users/jblaisdell/.rvm/g
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/jblaisdell/.gvm/bin/gvm-init.sh" ]] && source "/Users/jblaisdell/.gvm/bin/gvm-init.sh"
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 
 
