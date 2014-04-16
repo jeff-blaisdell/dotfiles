@@ -48,3 +48,9 @@ brew install tmux
 # teamocil - named tmux sessions.
 gem install teamocil
 mkdir ~/.teamocil
+
+#Install Chef
+curl -L https://www.opscode.com/chef/install.sh | sudo bash
+
+#Install Berkshelf for Chef
+gem install berkshelf
