@@ -98,3 +98,6 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
 
+# Pretty print out a directory tree structure.
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
