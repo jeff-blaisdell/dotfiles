@@ -4,10 +4,10 @@
 [push]
     default = simple
 [difftool  "dw"]
-    path = '/Applications/DeltaWalker.app/Contents/MacOS/git-diff'
-    cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-diff' "$LOCAL" "$REMOTE"
+    path = '/Applications/DeltaWalker.app/Contents/MacOS/git-difftool'
+    cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-difftool' "$LOCAL" "$REMOTE"
 [diff]
-    external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
+    tool = dw
 [mergetool  "dw"]
     path = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge'
     cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"

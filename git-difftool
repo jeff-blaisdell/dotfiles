@@ -1,0 +1,4 @@
+#!/bin/sh
+
+DW_PATH=`dirname "$0"`
+"$DW_PATH/DeltaWalker" "$1" "$2" -nosplash -mi -pwd="`pwd`"
