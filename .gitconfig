@@ -7,7 +7,7 @@
     path = '/Applications/DeltaWalker.app/Contents/MacOS/git-difftool'
     cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-difftool' "$LOCAL" "$REMOTE"
 [diff]
-    tool = dw
+    tool = vimdiff
 [mergetool  "dw"]
     path = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge'
     cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
@@ -28,19 +28,12 @@
     untracked = cyan
 [alias]
     br = branch
-    caa = commit -a --amend
     cd = checkout develop
     co = checkout
-    df = diff --relative --name-only upstream/develop
-    dtud = difftool upstream/develop..HEAD --
-    du = diff --relative upstream/develop
+    df = difftool -t dw -d
     fa = fetch --all
-    ffp = flow feature publish
-    ffs = flow feature start
     l = log --relative --graph
     ls = log --relative --graph --stat
     pf = "!if [ `git rev-parse --abbrev-ref --symbolic-full-name '@{u}' |sed -e 's#/.*##'` != 'upstream' ]; then git push -f; else echo 'DO NOT PUSH FORCE TO UPSTREAM'; fi"
-    prud = pull --rebase upstream develop
-    riud = rebase -i upstream/develop
     s = status
     b = branch -vv
