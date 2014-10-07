@@ -3,10 +3,14 @@
     email = jeff.blaisdell@gmail.com
 [push]
     default = simple
-[merge]
-    tool = vimdiff
+[difftool  "dw"]
+    cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-diff' "$LOCAL" "$REMOTE"
 [diff]
-    tool = vimdiff
+    tool = dw
+[mergetool  "dw"]
+    cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[merge]
+    tool = dw
 [color "branch"]
     current = yellow reverse
     local = yellow
