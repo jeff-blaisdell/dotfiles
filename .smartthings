@@ -1,0 +1,1 @@
+alias hub-search="nmap -PN -sT -p 22 172.17.2.0/23 | grep -B 4 open && arp -lan"
