@@ -1,1 +1,49 @@
 alias hub-search="nmap -PN -sT -p 22 172.17.2.0/23 | grep -B 4 open && arp -lan"
+
+function preprod() {
+	pyenv activate aws
+	aws sts assume-role --role-arn $ST_PREPROD_ROLE_ARN --role-session-name "Pre-Prod" --profile "st-identity" > ~/assume-preprod-output.txt
+	export AWS_ACCESS_KEY_ID=`cat ~/assume-preprod-output.txt | jq -c '.Credentials.AccessKeyId' | tr -d '"' | tr -d ' '`
+	export AWS_SECRET_ACCESS_KEY=`cat ~/assume-preprod-output.txt | jq -c '.Credentials.SecretAccessKey' | tr -d '"' | tr -d ' '`
+	export AWS_SESSION_TOKEN=`cat ~/assume-preprod-output.txt | jq -c '.Credentials.SessionToken' | tr -d '"' | tr -d ' '`
+	rm ~/assume-preprod-output.txt
+}
+
+function jhome() {
+	if [[ -z "$1" ]]; then
+		export JAVA_HOME="$JDK7_HOME"
+		echo "Java 7 is now active."
+	else
+		if [[ "$1" == "7" ]]; then
+			export JAVA_HOME="$JDK7_HOME"
+			echo "Java 7 is now active."
+		elif [[ "$1" == "8" ]]; then
+			export JAVA_HOME="$JDK8_HOME"
+			echo "Java 8 is now active."
+		else
+			echo "Java $1 is not supported for this shell."
+		fi
+	fi
+}
+
+function setjvmprofile() {
+  MESSAGE="Using JVM profile $1"
+  if [[ -z "$1" ]]; then
+    echo "Please select a JVM profile."
+  else
+    if [[ "$1" == "base" ]]; then
+      export JAVA_OPTS="$JAVA_BASE_OPTS"
+      echo "JVM base profile is now active."
+    elif [[ "$1" == "dm" ]]; then
+      export JAVA_OPTS="$JAVA_DATA_MGMT_OPTS"
+      echo "JVM data-management profile is now active."
+    else
+      export JAVA_OPTS="$JAVA_BASE_OPTS"
+      echo "JVM base profile is now active."
+    fi
+  fi
+}
+
+function listjvmprofiles() {
+  echo "base, dm"
+}
